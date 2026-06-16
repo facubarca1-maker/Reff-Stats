@@ -720,7 +720,7 @@ function BottomNav({ vista, setVista }) {
 }
 
 // ─── APP PRINCIPAL ────────────────────────────────────────────────────────────
-export default function App() {
+function App() {
   const [cats, setCats]         = useState(DEFAULT_CATS);
   const [partidos, setPartidos] = useState([]);
   const [notas, setNotas]       = useState([]);
