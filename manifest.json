@@ -1,0 +1,76 @@
+{
+  "name": "RefTrack - COARSFE ASB",
+  "short_name": "RefTrack",
+  "description": "App de gestión para árbitros de básquet. Registra partidos, honorarios, bitácora personal, equipos y jugadores.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#080e18",
+  "background_color": "#080e18",
+  
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23ea580c'/><stop offset='100%' style='stop-color:%23f97316'/></linearGradient></defs><rect fill='%23080e18' width='192' height='192'/><circle cx='96' cy='96' r='85' fill='none' stroke='url(%23g)' stroke-width='4'/><circle cx='96' cy='75' r='14' fill='%23f97316'/><path d='M65 115 Q96 145 127 115' fill='none' stroke='%23f97316' stroke-width='3' stroke-linecap='round'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='g2' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23ea580c'/><stop offset='100%' style='stop-color:%23f97316'/></linearGradient></defs><rect fill='%23080e18' width='512' height='512'/><circle cx='256' cy='256' r='230' fill='none' stroke='url(%23g2)' stroke-width='10'/><circle cx='256' cy='200' r='35' fill='%23f97316'/><path d='M160 320 Q256 400 352 320' fill='none' stroke='%23f97316' stroke-width='8' stroke-linecap='round'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  
+  "categories": ["sports", "productivity"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23080e18' width='540' height='720'/><rect fill='%230b1221' width='540' height='60'/><circle cx='30' cy='30' r='15' fill='%23f97316' opacity='0.5'/><text x='50' y='35' fill='%23f1f5f9' font-size='16' font-weight='bold'>RefTrack</text><rect fill='%230d1420' x='20' y='80' width='500' height='120' rx='12'/><rect fill='%23f97316' x='30' y='90' width='3' height='18'/><text x='40' y='110' fill='%23f1f5f9' font-size='14' font-weight='bold'>Dashboard económico</text></svg>",
+      "sizes": "540x720",
+      "form_factor": "narrow",
+      "type": "image/svg+xml"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Nuevo partido",
+      "short_name": "Partido",
+      "description": "Registrar rápidamente un nuevo partido",
+      "url": "/?tab=nuevo",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%23f97316' width='96' height='96' rx='20'/><text x='48' y='54' text-anchor='middle' fill='%23fff' font-size='48' font-weight='bold'>＋</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Ver estadísticas",
+      "short_name": "Stats",
+      "description": "Revisar honorarios y estadísticas",
+      "url": "/?tab=estadisticas",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%233b82f6' width='96' height='96' rx='20'/><text x='48' y='54' text-anchor='middle' fill='%23fff' font-size='40'>📊</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

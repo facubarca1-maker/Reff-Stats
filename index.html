@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#080e18">
+  <meta name="description" content="RefTrack COARSFE - App de gestión para árbitros de básquet">
+  
+  <title>RefTrack - COARSFE ASB</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23080e18' width='192' height='192'/><circle cx='96' cy='96' r='90' fill='%230b1221' stroke='%23f97316' stroke-width='3'/><circle cx='96' cy='80' r='16' fill='%23f97316'/><path d='M60 110 L96 140 L132 110' fill='none' stroke='%23f97316' stroke-width='3' stroke-linecap='round'/></svg>">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #080e18;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    #root {
+      width: 100%;
+      max-width: 540px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .splash {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #080e18 0%, #0b1221 100%);
+      text-align: center;
+      gap: 20px;
+    }
+    .splash-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 24px;
+      background: #0b1221;
+      border: 2px solid #f9731644;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      box-shadow: 0 8px 32px rgba(249, 115, 22, 0.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .splash h1 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .splash h1 span {
+      color: #f97316;
+    }
+    .splash p {
+      font-size: 12px;
+      color: #2e3f5c;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 24px;
+    }
+    .splash-bar {
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      border-radius: 2px;
+      animation: load 3s ease-in-out;
+    }
+    @keyframes load {
+      0% { width: 0; }
+      100% { width: 100px; }
+    }
+    .status {
+      font-size: 11px;
+      color: #2e3f5c;
+      margin-top: 24px;
+      animation: fadeIn 1.5s ease-in-out 1.5s both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="splash">
+      <div class="splash-logo">🏀</div>
+      <div>
+        <h1>Ref<span>Track</span></h1>
+        <p>COARSFE ASB · Santa Fe</p>
+      </div>
+      <div class="splash-bar"></div>
+      <p class="status">Cargando...</p>
+    </div>
+  </div>
+
+  <script>
+    // Registrar service worker para funcionar offline
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(err => 
+        console.log('SW registro fallido:', err)
+      );
+    }
+  </script>
+
+  <!-- React y Babel (de CDN) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- App component (será cargada como script) -->
+  <script type="text/babel" data-type="module" src="app.js"></script>
+
+  <!-- Inline fallback en caso de que app.js no cargue -->
+  <script>
+    // Esperar a que React esté listo y cargar la app
+    setTimeout(() => {
+      const root = document.getElementById('root');
+      if (!root.querySelector('[data-react-root]')) {
+        root.innerHTML = '<div style="color: #f87171; padding: 20px; text-align: center;">⚠️ Error cargando la aplicación. Recarga la página.</div>';
+      }
+    }, 5000);
+  </script>
+</body>
+</html>
